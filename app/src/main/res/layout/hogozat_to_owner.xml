@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/border"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:background="@drawable/border"
+            android:weightSum="2">
+            <TextView
+                android:id="@+id/player_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="محمود بشير محمود  "
+                android:textSize="20sp"
+                android:textColor="#000"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="اسم صاحب الحجز : "
+                android:textSize="20sp"
+                android:textColor="#000"
+                android:layout_weight="1"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:background="@drawable/border"
+            android:weightSum="2">
+            <TextView
+                android:id="@+id/playe_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+201096589671  "
+                android:textSize="20sp"
+                android:textColor="#000"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="رقم الموبايل : "
+                android:textSize="20sp"
+                android:textColor="#000"
+                android:layout_weight="1"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:background="@drawable/border"
+            android:weightSum="2">
+            <TextView
+                android:id="@+id/L_sa3ah"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="06:00 pm  "
+                android:textSize="20sp"
+                android:textColor="#000"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="الساعه : "
+                android:textSize="20sp"
+                android:textColor="#000"
+                android:layout_weight="1"
+
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:background="@drawable/border"
+            android:weightSum="2">
+            <TextView
+                android:id="@+id/L_Date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="9/3/2019  "
+                android:textSize="20sp"
+                android:textColor="#000"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="التاريخ : "
+                android:textSize="20sp"
+                android:textColor="#000"
+                android:layout_weight="1"
+
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
