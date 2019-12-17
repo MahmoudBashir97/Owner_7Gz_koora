@@ -2,14 +2,21 @@ package com.example.owner_app.ui;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.media.RingtoneManager;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -21,6 +28,7 @@ import com.example.owner_app.General.Storage.SharedPrefranceManager;
 import com.example.owner_app.Notification.Exampleservice;
 import com.example.owner_app.R;
 import com.example.owner_app.listitems.owner_listitem;
+import com.example.owner_app.pojo.Save_Data;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
@@ -54,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
     public static final String Phone = "phoneKey";
 
     public static final String MyPREFERENCES = "MyPrefs" ;
+
+    Intent intent_serv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,14 +111,32 @@ public class MainActivity extends AppCompatActivity {
                         editor.commit();
                         editor.apply();
 
-                       startService(user_name,hagz_date,hour_booking,Ml3b_name);
+                        //startService(user_name,hagz_date,hour_booking,Ml3b_name);
+
+
+
+                        //Save_Data save_data=new Save_Data(user_name,hagz_date,hour_booking,Ml3b_name);
+
+/*
+                        //MessageRecieved recieved=new MessageRecieved(new Message());
+                        intent_serv=new Intent(MainActivity.this, timer_service.class);
+                        intent_serv.putExtra("timer",1000);
+                       // intent_serv.putExtra("reciever",recieved);
+
+                        intent_serv.putExtra("inputExtra","checked");
+                        intent_serv.putExtra("username",user_name);
+                        intent_serv.putExtra("hagz_date",hagz_date);
+                        intent_serv.putExtra("booking_hour",hour_booking);
+                        intent_serv.putExtra("Ml3b_name",Ml3b_name);*/
+
 
                         no_books.setVisibility(View.GONE);
-                        list = new owner_listitem(phone_no,user_name,hour_booking,hagz_date);
+                        list = new owner_listitem(user_name,phone_no,hour_booking,hagz_date);
                         listitems.add(list);
                     }else {no_books.setVisibility(View.VISIBLE);}
 
                 }
+                       //startService(intent_serv);
                        adapter = new adpt_ownerREcycler( MainActivity.this,listitems);
                        recyclerView.setAdapter(adapter);
             }
@@ -142,5 +170,12 @@ public class MainActivity extends AppCompatActivity {
     public void stopService() {
         Intent serviceIntent = new Intent(this, Exampleservice.class);
         stopService(serviceIntent);
+    }
+
+    public class Message{
+        public void displayMessage(int resultCode, Bundle resultData){
+            String message=resultData.getString("message");
+            Toast.makeText(MainActivity.this, resultCode+" "+message, Toast.LENGTH_SHORT).show();
+        }
     }
 }

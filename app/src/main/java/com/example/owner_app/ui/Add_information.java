@@ -2,6 +2,7 @@ package com.example.owner_app.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -17,6 +18,7 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.util.HashMap;
 
@@ -30,7 +32,7 @@ public class Add_information extends AppCompatActivity {
     private DatabaseReference reference,df;
     FirebaseDatabase database;
     int count = -1;
-    String Ml_3b_name,Owner_number,Owner_name,El_3nwan,Owner_city;
+    String Ml_3b_name,Owner_number,Owner_name,El_3nwan,Owner_city,ownerDeviceToken;
     Intent i;
     int counter=0;
     String[] arr;
@@ -269,7 +271,11 @@ public class Add_information extends AppCompatActivity {
                         mm(two_plus_st);
                     }
                 }
+                ownerDeviceToken= FirebaseInstanceId.getInstance().getToken();
+                hashMap2.put("ownerDeviceToken",ownerDeviceToken);
                 reference.setValue(hashMap2);
+
+                Log.e("Token",ownerDeviceToken);
                 Intent intent=new Intent(Add_information.this,MainActivity.class);
                 intent.putExtra("area_name",Ml_3b_name);
                 intent.putExtra("Owner_city",Owner_city);

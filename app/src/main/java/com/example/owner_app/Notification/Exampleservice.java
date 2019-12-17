@@ -53,18 +53,17 @@ public class Exampleservice extends Service {
 
 
         Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        Notification notification1 = new NotificationCompat.Builder(Exampleservice.this,App.CHANNEL_1_ID)
+        NotificationCompat.Builder notification1 = new NotificationCompat.Builder(Exampleservice.this,App.CHANNEL_1_ID)
                 .setSmallIcon(R.drawable.resv)
                 .setContentTitle(Ml3b_name)
                 .setContentText("[" + "لقد حجز " + username +" "+"الساعه"+ hour_booking + " "+"بتاريخ"+ " "+hagz_date + "]")
                 .setContentIntent(pendingIntent)
-                .setPriority(NotificationCompat.PRIORITY_LOW)
                 .setLights(Color.YELLOW, 500, 500)
-                .setSound(alarmSound)
-                .build();
+                .setSound(alarmSound);
        // notificationManagerCompat.notify(2, notification1);
-        startForeground(1, notification1);
-
+        NotificationManager nm=(NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        nm.notify(1,notification1.build());
+      //  startForeground(1, notification1.build());
 
 /*
 
@@ -84,7 +83,6 @@ public class Exampleservice extends Service {
                         }}
                    */
         //stopSelf();
-        Timer();
         return START_NOT_STICKY;
     }
 
